@@ -27,7 +27,6 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
     }
     console.log(JSON.stringify(res.ops[0]._id.getTimestamp()));
   });
-=======
   // db.collection('Todos').insertOne({
   //   text: 'Something to do',
   //   complete: false
