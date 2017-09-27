@@ -7,7 +7,6 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   }
   console.log('Connected to mongoDB server');
 
-<<<<<<< HEAD
   db.collection('Todos').insertOne({
     text: 'Something to do',
     complete: false
@@ -46,7 +45,6 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   //   }
   //   console.log(JSON.stringify(res.ops[0]._id.getTimestamp()));
   // });
->>>>>>> 30ae67cd84c63c8a244c135815bbb0132dc97373
 
 
   db.close();
