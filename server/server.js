@@ -7,6 +7,8 @@ var {user} = require('./models/user');
 
 var app = express();
 
+const {ObjectID} = require('mongodb');
+
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
@@ -26,6 +28,19 @@ app.get('/todos', (req, res) => {
     res.send({todos});
   }, (e) => {
     res.status(400).send(e);
+  });
+});
+
+//require and val id
+app.get('/todos/:id', (req, res) => {
+  var id = req.params.id;
+  if(!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+  Todo.findById(id).then((todo) => {
+    res.send({todo});
+  }).catch((err) => {
+    res.status(400).send();
   });
 });
 
