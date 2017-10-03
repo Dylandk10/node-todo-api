@@ -4,12 +4,14 @@ const request = require('supertest');
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
+//test array of objects for testing data length = 2
 const todos = [{
   text: 'first test todo'
 }, {
   text: 'second test todo'
 }];
 
+//run threw each of todos
 beforeEach((done) => {
   Todo.remove({}).then(() => {
     return Todo.insertMany(todos);
