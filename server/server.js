@@ -61,7 +61,7 @@ app.delete('/todos/:id', (req, res) => {
   });
 });
 
-app.patch('/todos/:id,', (req, res) => {
+app.patch('/todos/:id', (req, res) => {
   var id = req.params.id;
   var body = _.pick(req.body, ['text', 'completed']);
 
@@ -69,13 +69,13 @@ app.patch('/todos/:id,', (req, res) => {
     return res.status(404).send();
   }
 
-  if(_.isboolean(body.completed) && body.completed) {
+  if(_.isBoolean(body.completed) && body.completed) {
     body.completedAt = new Date().getTime();
   } else {
     body.completed = false;
     body.completedAt = null;
   }
-  Todo.findByIdAndUpdated(id, {$set: body}, {new: true}).then((todo) => {
+  Todo.findByIdAndUpdate(id, {$set: body}, {new: true}).then((todo) => {
     if(!todo) {
       return res.status(404).send();
     }
