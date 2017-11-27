@@ -50,6 +50,17 @@ userSchema.methods.generateAuthToken = function() {
     return token;
   });
 };
+userSchema.methods.removeToken = function(token) {
+  var user = this;
+
+  user.update({
+    $pull: {
+      tokens: {
+        token: token
+      }
+    }
+  });
+};
 
 userSchema.statics.findByToken = function(token) {
   //model method use uppercase so it connects to mongoose model
